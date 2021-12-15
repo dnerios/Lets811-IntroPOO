@@ -1,6 +1,4 @@
-package entidades;
-
-import interfaces.ICarros;
+package carro;
 
 public class CarroCorrida extends Carro implements ICarros {
 

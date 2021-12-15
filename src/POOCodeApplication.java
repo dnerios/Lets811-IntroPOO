@@ -1,8 +1,9 @@
-import entidades.Carro;
-import entidades.CarroCorrida;
-import entidades.CarroPasseio;
-import entidades.Loja;
+import carro.Carro;
+import carro.CarroCorrida;
+import carro.CarroPasseio;
 import enums.TipoMotorEnum;
+import loja.Loja;
+import motocicleta.MotocicletaEsportiva;
 
 public class POOCodeApplication {
     public static void main(String[] args) {
@@ -20,6 +21,9 @@ public class POOCodeApplication {
                 , true);
 
         Carro carroPasseioDerivado = new CarroPasseio("Toyota", "Corola", 5, 5, TipoMotorEnum.COMBUSTAO.getDescricao());
+
+        MotocicletaEsportiva motocicletaEsportiva = new MotocicletaEsportiva("Honda", 500);
+        motocicletaEsportiva.cortarGiro();
 
         //Lembre-se: quando pedimos para um objeto ser impresso, o método invocado é o .toString()
         //Se não reescrevermos o .toString() na classe, por padrão, será impresso o endereço de memória
@@ -77,7 +81,7 @@ public class POOCodeApplication {
         System.out.println();
         System.out.println("========== USANDO DEFAULT EM UMA INTERFACE ============");
         String hello = carroCorrida.hello();
-        System.out.println("Usando o poilimorfismo de sobreposição: " + hello);
+        System.out.println("Usando o polimorfismo de sobreposição: " + hello);
 
         hello = carroPasseio.hello();
         System.out.println("Usando o default: " + hello);

@@ -1,6 +1,4 @@
-package entidades;
-
-import interfaces.ICarros;
+package carro;
 
 public class CarroPasseio extends Carro implements ICarros {
 
@@ -35,4 +33,5 @@ public class CarroPasseio extends Carro implements ICarros {
         this.velocidadeAtual = velocidade;
         return "VRUUUUUUUM";
     }
+
 }

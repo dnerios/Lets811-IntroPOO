@@ -1,4 +1,6 @@
-package entidades;
+package loja;
+
+import carro.Carro;
 
 public class Loja {
 
