@@ -8,6 +8,6 @@ public class MotocicletaEsportiva extends Motocicleta {
 
     @Override
     public void cortarGiro() {
-        System.out.println("Cortando giro...");
+        System.out.println("Shhhh...");
     }
 }
