@@ -6,8 +6,7 @@ public class Loja {
     private int limiteCarros;
     private Carro[] listaCarros;
 
-
-    //Overload - Sobrescrita de métodos
+    // Overload - Sobrecarga de métodos
     public Loja(String nome, int limiteCarros) {
         this.nome = nome;
         this.limiteCarros = limiteCarros;
@@ -44,15 +43,16 @@ public class Loja {
         this.listaCarros = listaCarros;
     }
 
-    //Podemos trbalhar dentro dos métodos utilizando os dados que estão armazenados em cada instância
+    // Podemos trbalhar dentro dos métodos utilizando os dados que estão armazenados em cada instância
     public String comprarCarro(Carro carro) {
+
         if (this.listaCarros.length == this.limiteCarros) {
             return "Você atingiu o limite de carros para sua loja!";
         }
 
         Carro[] listaCarroAtualizada = new Carro[this.listaCarros.length + 1];
 
-        for (int i=0; i < this.listaCarros.length; i++) {
+        for (int i = 0; i < this.listaCarros.length; i++) {
             listaCarroAtualizada[i] = this.listaCarros[i];
         }
 
