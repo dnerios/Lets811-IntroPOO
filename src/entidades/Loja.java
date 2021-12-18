@@ -1,6 +1,13 @@
 package entidades;
 
-public class Loja {
+import exceptions.LimiteAtingidoException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.time.LocalDateTime;
+
+public class Loja extends Exception{
 
     private String nome;
     private int limiteCarros;
@@ -44,20 +51,44 @@ public class Loja {
     }
 
     // Podemos trbalhar dentro dos métodos utilizando os dados que estão armazenados em cada instância
-    public String comprarCarro(Carro carro) {
+    public String comprarCarro(Carro carro) throws LimiteAtingidoException{
 
-        if (this.listaCarros.length == this.limiteCarros) {
-            return "Você atingiu o limite de carros para sua loja!";
+        if (this.listaCarros.length > 0) {
+            throw new LimiteAtingidoException("Você atingiu o limite de carros para sua loja!");
+            //return "Você atingiu o limite de carros para sua loja!";
         }
 
         Carro[] listaCarroAtualizada = new Carro[this.listaCarros.length + 1];
 
         for (int i = 0; i < this.listaCarros.length; i++) {
             listaCarroAtualizada[i] = this.listaCarros[i];
+
+            /*try{
+                listaCarroAtualizada[i] = this.listaCarros[25];
+            } catch (ArrayIndexOutOfBoundsException e) {
+                //throw new ArrayIndexOutOfBoundsException();
+                System.out.println("Explodiu o index: " + e.getMessage());
+            } catch (NullPointerException e) {
+                System.out.println("Acessando objetos nulos: " + e.getMessage());
+            } finally {
+                System.out.println("PASSEI NO FINALLY");
+            }*/
         }
 
         listaCarroAtualizada[listaCarros.length] = carro;
         this.listaCarros = listaCarroAtualizada;
+
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter("log-letscode.txt", "UTF-8");
+            writer.println("LOGGER - " + LocalDateTime.now() + " - Antes existiam: X carros - Compra efetuada com sucesso. Seu estoque agora é de " + this.listaCarros.length + " veículos");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } finally {
+            writer.close();
+        }
 
         return "Compra efetuada com sucesso. Seu estoque agora é de " + this.listaCarros.length + " veículos";
     }

@@ -1,0 +1,1 @@
+LOGGER DO CONSTRUTOR - 2021-12-17T21:42:42.562505 - Antes existiam: X carros - Compra efetuada com sucesso. Seu estoque agora é de X veículos

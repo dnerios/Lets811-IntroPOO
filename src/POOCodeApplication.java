@@ -3,9 +3,13 @@ import entidades.CarroCorrida;
 import entidades.CarroPasseio;
 import entidades.Loja;
 import enums.TipoMotorEnum;
+import exceptions.LimiteAtingidoException;
+
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 
 public class POOCodeApplication {
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
         /*
            Instanciando um carro!
@@ -106,8 +110,14 @@ public class POOCodeApplication {
 
 
         // QUE TAL COMPRAR UM CARRO AGORA? Podemos passar objetos como parâmetros também!
-        System.out.println(loja.comprarCarro(carro));
-        System.out.println(loja.comprarCarro(carroNovo));
+
+
+        try {
+            System.out.println(loja.comprarCarro(carro));
+        } catch (LimiteAtingidoException e) {
+            System.out.println("{" + e.TITLE +"} - " + e.getMessage());
+        }
+        //System.out.println(loja.comprarCarro(carroNovo));
 
         System.out.println();
         System.out.println("Fim do programa :)");
